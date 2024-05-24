@@ -1,0 +1,9 @@
+---
+- name: Deploy Spring Boot Anime Backend Application
+  hosts: localhost
+  tasks:
+    - name: Deploy Docker image and Kubernetes resources
+      become: false
+      shell: kubectl apply -f "{{ item }}"
+      with_fileglob:
+        - /var/lib/jenkins/workspace/AnimeReview/Anime/kubernetes/*.yaml
